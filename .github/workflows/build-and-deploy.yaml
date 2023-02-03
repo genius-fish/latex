@@ -9,6 +9,8 @@ jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
+    container:
+      image: innovenso/townplanner:latest
     env:
       GITHUB_PACKAGES_OWNER: ${{ secrets.PACKAGES_OWNER }}
       GITHUB_PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
