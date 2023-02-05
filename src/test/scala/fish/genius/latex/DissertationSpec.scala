@@ -9,7 +9,7 @@ import java.io.File
 import java.nio.file.Files
 
 class DissertationSpec extends AnyFlatSpec {
-  ignore should "generate a book in the University of Malta style" in {
+  it should "generate a book in the University of Malta style" in {
     val workDirectory = Files.createTempDirectory("dissertation").toFile
     val style = FileUtils.copyResourceFromFileOrClassPathToFile(
       "/um.cls",
@@ -166,75 +166,79 @@ class DissertationSpec extends AnyFlatSpec {
             }
           }
           Text("With a text")
-          Center {
-            Group {
-              LongTable(
-                L,
-                P(15),
-                P(15),
-                P(15),
-                P(15),
-                P(15),
-                P(15),
-                P(15),
-                P(15)
-              ) {
-                Caption(
-                  "Performance of Ligity in HTS mode against the Ligity-compatible DUD-E targets"
-                )(Some("DUD-E targets"))
-                Label("tab:full-dude-results")
-                Row()
-                TableFirstHeader {
-                  TopRule()
-                  Row(
-                    Cell("Target"),
-                    Cell("No. of Actives"),
-                    Cell("No. of Decoys"),
-                    Cell("ROC AUC Tanimoto"),
-                    Cell("ROC AUC Tversky"),
-                    Cell("BEDROC Tanimoto"),
-                    Cell("BEDROC Tversky"),
-                    Cell("EF Tanimoto"),
-                    Cell("EF Tversky")
+          Landscape {
+
+            Center {
+              Group {
+                LongTable(
+                  L,
+                  P(15),
+                  P(15),
+                  P(15),
+                  P(15),
+                  P(15),
+                  P(15),
+                  P(15),
+                  P(15)
+                ) {
+                  Caption(
+                    "Performance of Ligity in HTS mode against the Ligity-compatible DUD-E targets"
+                  )(Some("DUD-E targets"))
+                  Label("tab:full-dude-results")
+                  Row()
+                  TableFirstHeader {
+                    TopRule()
+                    Row(
+                      Cell("Target"),
+                      Cell("No. of Actives"),
+                      Cell("No. of Decoys"),
+                      Cell("ROC AUC Tanimoto"),
+                      Cell("ROC AUC Tversky"),
+                      Cell("BEDROC Tanimoto"),
+                      Cell("BEDROC Tversky"),
+                      Cell("EF Tanimoto"),
+                      Cell("EF Tversky")
+                    )
+                    MidRule()
+                  }
+                  TableHeader {
+                    MidRule()
+                    Row(
+                      Cell("Target"),
+                      Cell("No. of Actives"),
+                      Cell("No. of Decoys"),
+                      Cell("ROC AUC Tanimoto"),
+                      Cell("ROC AUC Tversky"),
+                      Cell("BEDROC Tanimoto"),
+                      Cell("BEDROC Tversky"),
+                      Cell("EF Tanimoto"),
+                      Cell("EF Tversky")
+                    )
+                    MidRule()
+                  }
+                  TableFooter {
+                    MidRule()
+                    Row(MultiCell(7, Some(R))("(continued...)"))
+                  }
+                  TableLastFooter {}
+                  (1 to 100).foreach(i =>
+                    Row(
+                      Cell(s"A$i"),
+                      Cell(f"${java.lang.Math.random()}%2.4f"),
+                      Cell(f"${java.lang.Math.random()}%2.4f"),
+                      Cell(f"${java.lang.Math.random()}%2.4f"),
+                      Cell(f"${java.lang.Math.random()}%2.4f"),
+                      Cell(f"${java.lang.Math.random()}%2.4f"),
+                      Cell(f"${java.lang.Math.random()}%2.4f"),
+                      Cell(f"${java.lang.Math.random()}%2.4f"),
+                      Cell(f"${java.lang.Math.random()}%2.4f")
+                    )
                   )
-                  MidRule()
+                  BottomRule()
                 }
-                TableHeader {
-                  MidRule()
-                  Row(
-                    Cell("Target"),
-                    Cell("No. of Actives"),
-                    Cell("No. of Decoys"),
-                    Cell("ROC AUC Tanimoto"),
-                    Cell("ROC AUC Tversky"),
-                    Cell("BEDROC Tanimoto"),
-                    Cell("BEDROC Tversky"),
-                    Cell("EF Tanimoto"),
-                    Cell("EF Tversky")
-                  )
-                  MidRule()
-                }
-                TableFooter {
-                  MidRule()
-                  Row(MultiCell(7, Some(R))("(continued...)"))
-                }
-                TableLastFooter {}
-                (1 to 100).foreach(i =>
-                  Row(
-                    Cell(s"A$i"),
-                    Cell(f"${java.lang.Math.random()}%2.4f"),
-                    Cell(f"${java.lang.Math.random()}%2.4f"),
-                    Cell(f"${java.lang.Math.random()}%2.4f"),
-                    Cell(f"${java.lang.Math.random()}%2.4f"),
-                    Cell(f"${java.lang.Math.random()}%2.4f"),
-                    Cell(f"${java.lang.Math.random()}%2.4f"),
-                    Cell(f"${java.lang.Math.random()}%2.4f"),
-                    Cell(f"${java.lang.Math.random()}%2.4f")
-                  )
-                )
-                BottomRule()
               }
             }
+
           }
 
         }
