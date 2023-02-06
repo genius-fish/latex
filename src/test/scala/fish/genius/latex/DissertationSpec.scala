@@ -72,6 +72,13 @@ class DissertationSpec extends AnyFlatSpec {
                   "“’Tis some visitor,” I muttered, “tapping at my chamber door—"
                 )
               }
+              Description {
+                Item("This is it, and nothing more", Some("line 1"))
+                Item(
+                  "Ah, distinctly I remember it was in the bleak December;",
+                  Some("line 2")
+                )
+              }
 
               Table() {
                 Caption("A beautiful and complex table")(
@@ -165,7 +172,10 @@ class DissertationSpec extends AnyFlatSpec {
               }
             }
           }
-          Text("With a text")
+          Text("With a text", whitespaceAfter = false)
+          Bold("in bold")
+          Italic("or italic")
+          Text("or plain")
           Landscape {
 
             Center {
