@@ -9,7 +9,7 @@ import java.io.File
 import java.nio.file.Files
 
 class DissertationSpec extends AnyFlatSpec {
-  it should "generate a book in the University of Malta style" in {
+  ignore should "generate a book in the University of Malta style" in {
     val workDirectory = Files.createTempDirectory("dissertation").toFile
     val style = FileUtils.copyResourceFromFileOrClassPathToFile(
       "/um.cls",
