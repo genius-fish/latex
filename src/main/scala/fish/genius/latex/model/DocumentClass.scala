@@ -7,7 +7,7 @@ object DocumentClass {
       documentBuilder: DocumentBuilder
   ): Unit = Command(
     "documentclass",
-    options,
+    List(options.mkString(",")),
     List(name)
   )
 

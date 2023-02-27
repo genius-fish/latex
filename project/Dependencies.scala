@@ -9,8 +9,7 @@ object Dependencies {
     )
   }
   object Lorem {
-    private val _version = "2.1"
-    final val * = Seq("com.thedeanda" % "lorem" % _version % Test)
+    final val * = Seq("fish.genius" %% "lorem" % "1.1.0" % Test)
   }
   object GeniusFish {
     final val config = "fish.genius" %% "config" % "1.0.6"

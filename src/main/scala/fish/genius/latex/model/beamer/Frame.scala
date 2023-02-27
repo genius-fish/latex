@@ -7,6 +7,7 @@ object Frame {
   def apply(
       title: String,
       subtitle: Option[String] = None,
+      options: List[String] = Nil,
       condition: Boolean = true
   )(
       body: => Any
@@ -15,7 +16,8 @@ object Frame {
       Environment(
         "frame",
         parameters = List(title)
-          .map(Texified(_).output) ++ subtitle.map(Texified(_).output).toList
+          .map(Texified(_).output) ++ subtitle.map(Texified(_).output).toList,
+        optionalParameters = options
       ) {
         body
       }

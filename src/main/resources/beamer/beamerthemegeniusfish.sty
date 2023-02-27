@@ -1,0 +1,40 @@
+\RequirePackage{xcolor}
+\mode<presentation>
+
+\definecolor{innovensoText}{rgb}{37,26,6}   % Color
+\definecolor{innovensoHighLight}{rgb}{8,136,140}   % Color
+\definecolor{innovensoLink}{rgb}{140,131,79} % Color
+\definecolor{innovensoHeader}{rgb}{115,81,18}   % Color
+\definecolor{innovensoBackground}{rgb}{222,212,196}   % Color
+\definecolor{innovensoBorder}{rgb}{77,77,77}   % Color
+\definecolor{innovensoRed}{rgb}{255,0,0}   % Color
+\definecolor{innovensoGreen}{rgb}{0,255,0}   % Color
+\definecolor{innovensoAmber}{rgb}{255,255,0}   % Color
+\definecolor{innovensoBlue}{rgb}{0,0,255}   % Color
+\definecolor{innovensoBlack}{rgb}{0,0,0}   % Color
+\definecolor{innovensoWhite}{rgb}{255,255,255}   % Color
+
+
+% Settings
+\useinnertheme{geniusfish}
+\useoutertheme{geniusfish}
+\usecolortheme{geniusfish}
+\usefonttheme{geniusfish}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[shadow=false]
+
+\patchcmd{\beamer@sectionintoc}
+{\vfill}
+{}
+{}
+{}
+
+\patchcmd{\beamer@subsectionintoc}
+{\vfill}
+{}
+{}
+{}
+\makeatother
+
+\mode<all>
