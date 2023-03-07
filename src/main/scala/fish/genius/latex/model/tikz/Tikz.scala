@@ -2,6 +2,8 @@ package fish.genius.latex.model.tikz
 
 import fish.genius.latex.{DocumentBuilder, Texified, TextVariant}
 
+import java.io.File
+
 object Tikz {
   type CoordinatesInMillimeter = (Int, Int)
   type PolarCoordinates = (Double, Double)
@@ -95,6 +97,17 @@ object Tikz {
       escapeContent = false
     )
 
+  def imageFileNode(
+      image: File,
+      width: Int,
+      identifier: String,
+      at: Option[String] = None,
+      style: List[TikzStyle] = Nil
+  )(implicit documentBuilder: DocumentBuilder): Unit = {
+    documentBuilder.addImage(image)
+    imageNode(image.getName, width, identifier, at, style)
+  }
+
   def imageNodeAtPolar(
       imageName: String,
       width: Int,
@@ -109,6 +122,17 @@ object Tikz {
       identifier = identifier,
       escapeContent = false
     )
+
+  def imageFileNodeAtPolar(
+      image: File,
+      width: Int,
+      identifier: String,
+      at: PolarCoordinates,
+      style: List[TikzStyle] = Nil
+  )(implicit documentBuilder: DocumentBuilder): Unit = {
+    documentBuilder.addImage(image)
+    imageNodeAtPolar(image.getName, width, identifier, at, style)
+  }
 
   def imageNodeAt(
       imageName: String,
@@ -125,4 +149,14 @@ object Tikz {
       escapeContent = false
     )
 
+  def imageFileNodeAt(
+      image: File,
+      width: Int,
+      identifier: String,
+      at: CoordinatesInMillimeter,
+      style: List[TikzStyle] = Nil
+  )(implicit documentBuilder: DocumentBuilder): Unit = {
+    documentBuilder.addImage(image)
+    imageNodeAt(image.getName, width, identifier, at, style)
+  }
 }

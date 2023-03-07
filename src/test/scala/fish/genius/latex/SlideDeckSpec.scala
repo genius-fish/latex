@@ -45,6 +45,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 import java.io.File
 import java.nio.file.Files
+import java.util.UUID
 
 class SlideDeckSpec extends AnyFlatSpec {
   ignore should "generate a Beamer Slide Deck" in {
@@ -122,6 +123,12 @@ class SlideDeckSpec extends AnyFlatSpec {
                   style = List(Anchor(West), Rotate(45))
                 )
                 Tikz.imageNodeAt("logo", 60, "thesecondlogo", (100, 60))
+                Tikz.imageFileNodeAt(
+                  new File("some_nonexisting_file.pdf"),
+                  width = 60,
+                  "theplaceholder",
+                  (30, 30)
+                )
               }
             }
             Frame("Slide 5") {

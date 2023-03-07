@@ -13,7 +13,9 @@ class LaTeX(val workingDirectory: File) extends Loggable {
   imagesDirectory.mkdirs()
 
   def withImage(image: File): LaTeX = {
-    FileUtils.copy(image, new File(imagesDirectory, image.getName))
+    val result = FileUtils
+      .copy(image, new File(imagesDirectory, image.getName))
+    if (result.isEmpty) withPlaceholderImage(image.getName)
     this
   }
 
@@ -25,13 +27,17 @@ class LaTeX(val workingDirectory: File) extends Loggable {
   def withOptionalImage(image: Option[File]): LaTeX = withImages(image.toList)
 
   def withImageResource(path: String, filename: String): LaTeX = {
-    FileUtils.copyResourceFromFileOrClassPathToFile(
+    val result = FileUtils.copyResourceFromFileOrClassPathToFile(
       path,
       new File(imagesDirectory, filename),
       this.getClass
     )
+    if (result.isEmpty) withPlaceholderImage(filename)
     this
   }
+
+  def withPlaceholderImage(filename: String): LaTeX =
+    withImageResource("/placeholder.pdf", filename)
 
   def withImageResources(
       listOfPathsAndFilenames: List[(String, String)]
@@ -83,7 +89,7 @@ class LaTeX(val workingDirectory: File) extends Loggable {
       targetFile: File,
       forTheme: Boolean = false
   )(body: DocumentBuilder => Any): LaTeX = {
-    val builder = new DocumentBuilder(forTheme = forTheme)
+    val builder = new DocumentBuilder(forTheme = forTheme)(this)
     body.apply(builder)
     try {
       FileUtils.writeStringToFile(builder.output, targetFile)
