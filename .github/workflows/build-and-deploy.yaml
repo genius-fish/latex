@@ -10,7 +10,7 @@ jobs:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     container:
-      image: pandoc/latex:latest-ubuntu
+      image: innovenso/townplanner:latest
     env:
       GITHUB_PACKAGES_OWNER: ${{ secrets.PACKAGES_OWNER }}
       GITHUB_PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
