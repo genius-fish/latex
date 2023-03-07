@@ -7,7 +7,7 @@ import java.io.File
 import java.nio.file.Files
 
 class RendererSpec extends AnyFlatSpec {
-  ignore should "render tex files to PDF" in {
+  it should "render tex files to PDF" in {
     val workingDirectory = Files.createTempDirectory("latex").toFile
     val latexFile = new File(workingDirectory, "sample.tex")
     FileUtils.writeStringToFile(

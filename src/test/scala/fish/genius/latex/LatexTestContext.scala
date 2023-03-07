@@ -1,2 +1,0 @@
-package fish.genius.latex
-

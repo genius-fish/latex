@@ -19,8 +19,8 @@ import fish.genius.latex.model.{
 import org.scalatest.flatspec.AnyFlatSpec
 
 class CommandSpec extends AnyFlatSpec {
-  ignore should "print a LaTeX document from the DSL" in {
-    val latex = LaTeX { implicit body =>
+  it should "print a LaTeX document from the DSL" in {
+    val latex = LaTeX().withMainSource { implicit body =>
       DocumentClass("article", List("a4"))
       UsePackage("tikz")
       Document {
@@ -34,7 +34,7 @@ class CommandSpec extends AnyFlatSpec {
         Text("With a text")
       }
     }
-    val pdf = Renderer.pdf(latex, "commandspec")
+    val pdf = latex.render
     assert(pdf.nonEmpty)
     println(pdf.get.getAbsolutePath)
   }
