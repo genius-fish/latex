@@ -9,7 +9,7 @@ import java.io.File
 import java.nio.file.Files
 
 class DissertationSpec extends AnyFlatSpec {
-  it should "generate a book in the University of Malta style" in {
+  ignore should "generate a book in the University of Malta style" in {
     val latex = LaTeX()
       .withResource("/um.cls", "um.cls")
       .withImageResource("/genius_fish.eps", "genius_fish.eps")

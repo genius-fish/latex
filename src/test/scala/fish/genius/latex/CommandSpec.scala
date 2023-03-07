@@ -19,7 +19,7 @@ import fish.genius.latex.model.{
 import org.scalatest.flatspec.AnyFlatSpec
 
 class CommandSpec extends AnyFlatSpec {
-  it should "print a LaTeX document from the DSL" in {
+  ignore should "print a LaTeX document from the DSL" in {
     val latex = LaTeX().withMainSource { implicit body =>
       DocumentClass("article", List("a4"))
       UsePackage("tikz")

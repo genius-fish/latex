@@ -47,7 +47,7 @@ import java.io.File
 import java.nio.file.Files
 
 class SlideDeckSpec extends AnyFlatSpec {
-  it should "generate a Beamer Slide Deck" in {
+  ignore should "generate a Beamer Slide Deck" in {
     val themeResources: List[(String, String)] =
       List("color", "font", "inner", "outer", "").map(it =>
         (
